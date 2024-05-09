@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Fitness Pricing</title>
     <style>
-        /* Your existing CSS styles */
         body {
             font-family: poppins;
             background: #eee;
@@ -183,8 +182,6 @@
             <a href="#" class="select-btn">Select</a>
         </div>
     </div>
-
-    <!-- Popup container -->
     <div class="popup-container" id="popup-container">
         <div class="popup-content">
             <span class="close-btn" id="close-btn">&times;</span>
@@ -196,14 +193,12 @@
                     <option value="EUR">EUR</option>
                     <option value="GBP">GBP</option>
                     <option value="INR">INR</option>
-                    <!-- Add more options for other currencies as needed -->
                 </select>
             </div>
         </div>
     </div>
 
     <script>
-        // JavaScript code to handle button clicks and show/hide popup
         const singlePrices = document.querySelectorAll('.single-price');
         const popupContainer = document.getElementById('popup-container');
         const closeBtn = document.getElementById('close-btn');
@@ -215,20 +210,17 @@
             'EUR': '€',
             'GBP': '£',
             'INR': '₹'
-            // Add more currency symbols as needed
-        };
 
-        // Conversion rates for 1 USD to other currencies
+        };
         const conversionRates = {
             'USD': 1,
             'EUR': 0.89, // 1 USD = 0.89 EUR
             'GBP': 0.77, // 1 USD = 0.77 GBP
-            'INR': 75.12 // 1 USD = 75.12 INR (example rate, update as per actual)
-            // Add more conversion rates as needed
+            'INR': 75.12 // 1 USD = 75.12 INR 
+
         };
 
         const convertCurrency = (price, currency) => {
-            // Convert price to selected currency
             const convertedPrice = price * conversionRates[currency];
             return convertedPrice.toFixed(2) + ' ' + currencySymbols[currency];
         };
@@ -236,7 +228,7 @@
         singlePrices.forEach(price => {
             price.addEventListener('click', function() {
                 const planName = this.querySelector('h1:first-of-type').textContent;
-                const priceValue = parseFloat(this.querySelector('.price h2').textContent.substring(1)); // Remove currency symbol
+                const priceValue = parseFloat(this.querySelector('.price h2').textContent.substring(1)); 
                 const selectedCurrency = currencyDropdown.value;
                 const convertedPrice = convertCurrency(priceValue, selectedCurrency);
                 selectedPlan.textContent = `Selected Plan: ${planName} (${convertedPrice})`;
